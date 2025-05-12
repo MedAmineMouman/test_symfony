@@ -1,0 +1,13 @@
+<a href="{{ path('produit_dashboard') }}" class="btn btn-secondary mb-3">&larr; Retour au dashboard</a>
+{% if form is not null %}
+    {{ form_start(form, {'attr': {'enctype': 'multipart/form-data'}}) }}
+        {{ form_row(form.nom) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.prix) }}
+        {{ form_row(form.stock) }}
+        {{ form_row(form.image) }}
+        <div class="d-grid gap-2 mt-3">
+            <button type="submit" class="btn btn-success">Ajouter</button>
+        </div>
+    {{ form_end(form) }}
+{% endif %} 

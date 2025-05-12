@@ -1,0 +1,24 @@
+<a href="{{ path('produit_dashboard') }}" class="btn btn-secondary mb-3">&larr; Retour au dashboard</a>
+<div class="accordion" id="produitAccordion">
+    {% for produit in produits %}
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading{{ produit.id }}">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ produit.id }}" aria-expanded="false" aria-controls="collapse{{ produit.id }}">
+                    {{ produit.nom }} - {{ produit.prix }} € (Stock : {{ produit.stock }})
+                </button>
+            </h2>
+            <div id="collapse{{ produit.id }}" class="accordion-collapse collapse" aria-labelledby="heading{{ produit.id }}" data-bs-parent="#produitAccordion">
+                <div class="accordion-body">
+                    <strong>Description :</strong> {{ produit.description }}<br>
+                    {% if produit.image %}
+                        <img src="/uploads/{{ produit.image }}" alt="{{ produit.nom }}" class="img-fluid my-2" style="max-width:200px;">
+                    {% endif %}
+                    <br>
+                    <small>Créé le : {{ produit.dateCreation|date('d/m/Y H:i') }}</small>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-info">Aucun produit trouvé.</div>
+    {% endfor %}
+</div> 
